@@ -1,0 +1,23 @@
+Don't Cry For Me -- Storyline
+
+Pre-game storyline
+
+10,000 years from now, humanity coexists in a universe filled with robots and aliens. There is an endless count of planets filled with life that are spread across the known universe, each different in shape, ecosystem, and inhabitation. On one abnormally large planet, the advent of Artificial Intelligence has made human labor useless. Without any need for intelligence, humans become obsessed with superficial characteristics, such as looks and natural athleticism. Instead of earning wages, humans can purchase goods with a digital coin that is earned by walking with a pedometer. This further contributes to interest in looks and body.
+
+It has become common practice for parents to abandon their children if their physical appearance is flawed. Often, these children will end up in the care of compassionate robots, akin to humans taking ownership of dogs. Deformed humans become a beloved pet to many android families.
+
+Jon, who is born on the Revilasis in the Galicom-1 Galactic Region was discarded by his family because his face was disfigured at birth. Jon was found on the streets and taken in by a family of Robots, and cared for lovingly. However, he always felt a disconnect from his family and everyone around him. Not only was he a second class citizen on the planet because of his appearances, he also struggled with the feeling of abandonment after being left by his family. In an attempt to cope with these feelings, Jon imagined himself to be from an alien planet, where everyone looked similar to him and his parents awaited his return. In an event now known as "the loop day", a wormhole opened up above the planet and showered foreign objects down onto Revilasis. Jon cultivated a belief that on loop day he had been separated from his parents and pulled through the wormhole. He was never told that his parents abandoned him, in an attempt to shelter him from pain.
+
+When Jon turned 11, a new wormhole opened up in the sky just like the loop day wormhole. In a whir of excitement, Jon steals his robot owners' Spaceship and flies through the wormhole. Upon passing through, his spaceship begins to burn up, and he crash lands on a foreign planet. This marks the beginning of Jon's adventure post-relationship.
+
+
+Fixing the ship
+
+The first objective Jon has is to fix the ship which just crashed on an unknown planet. Jon must walk around the planet to find lost parts, and talk to people living on the planet to collect parts. Someone he meets here will give him his first pedometer. This is used to help Jon earn money throughout the game. Some pieces will be found trashed around the planet, others will have to be purchased with the coins he gets with his pedometer. The planet will be a medium size. The objective of this first planet is to introduce game mechanics, and help Jon understand how to interact with people.
+
+Once Jon recovers all the needed parts, he can then board his ship and head back out into space. The map will start within small bounds, in order to force Jon to uncover some crucial elements to progress in the game.
+
+
+Finding the scanner
+
+The scanner is a piece of technology that will let Jon fabricate an object from pure energy. There will be files scattered throughout the universe that he can download and then make with the scanner. Energy will be purchased in a marketplace in little green tubes that act like a battery. Initially Jon, does not have the scanner, and he must find it. It will be located on a very small planet with only one person. The person is an old farmer named Adam. Adam and Jon talk for a while. He explains how the scanner used to be a tool that everyone had 50 years ago, but had grown out of use because people had already made everything that was needed. Adam insists he no longer needs the tool because he has chosen a technology-free life of tranquility. He gives the tool to Jon, and continues to tend to his farm. On this same planet, there will be a small ruin which Jon can then scan and download a file for a galaxy map. At this point the space in which he can explore will expand.
