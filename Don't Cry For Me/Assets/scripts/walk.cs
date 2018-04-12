@@ -13,7 +13,7 @@ public class walk : MonoBehaviour {
 	private Vector2 verticalDirection;
 
 	private LayerMask layerMaskPlanet = 1 << 9;
-	private float raycastMaxDistance = 0.1f;
+	private float raycastMaxDistance = 1.5f;
 	bool jumpRequest;
 
 	void Awake() {
@@ -73,14 +73,22 @@ public class walk : MonoBehaviour {
 		Vector2 velocityVerticalVector = Vector3.Project (rb.velocity, verticalDirection);
 
 		Debug.DrawRay (playerCenter, verticalDirection, Color.blue);
-		Debug.DrawRay (playerCenter, verticalDirection * velocityVertical, Color.magenta);
+		//Debug.DrawRay (playerCenter, verticalDirection * velocityVertical, Color.magenta);
 
 		Debug.DrawRay (playerCenter, velocityHorizontalVector, Color.red);
 		Debug.DrawRay (playerCenter, movement, Color.green);
+		Debug.DrawRay (playerCenter, -verticalDirection.normalized*raycastMaxDistance, Color.cyan);
+
 
 		if (movement != Vector2.zero && velocityHorizontalVector.normalized == -movement.normalized) {	// if the player's movement is not the same direction as its current velocity
 			// set the horizontal velocity to 0
 			rb.velocity -= velocityHorizontalVector;
+			SpriteRenderer render = new SpriteRenderer ();
+			if (render.flipX == false) {
+				render.flipX = true;
+			} else {
+				render.flipX = false;
+			}
 		}
 
 		if (velocityHorizontal < 5) {
@@ -103,9 +111,11 @@ public class walk : MonoBehaviour {
 	}
 
 	private RaycastHit2D CheckRaycast() {
-
 		Vector2 startingPosition = new Vector2 (transform.position.x, transform.position.y);
-		return Physics2D.Raycast (startingPosition - verticalDirection.normalized/2, -verticalDirection.normalized, raycastMaxDistance, layerMaskPlanet);
+		return Physics2D.Raycast (	startingPosition - verticalDirection.normalized/2,
+									-verticalDirection.normalized,
+									raycastMaxDistance,
+									layerMaskPlanet	);
 	}
 
 	private bool RaycastCheckUpdate() {
