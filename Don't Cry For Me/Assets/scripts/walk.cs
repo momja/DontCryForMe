@@ -1,34 +1,39 @@
+// DCFM Team 2018
+
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class walk : MonoBehaviour {
+public class Walk : MonoBehaviour {
 
 	public float speed;
 	private Rigidbody2D rb;
+	private SpriteRenderer render;
 
-	public float fallMultipier = 2.5f;
+	public float fallMultipier = 4.5f;
 	public float lowJumpMultipler = 2f;
 
 	private Vector2 verticalDirection;
 
 	private LayerMask layerMaskPlanet = 1 << 9;
-	private float raycastMaxDistance = 1.5f;
+	private float raycastMaxDistance = 3.0f;
 	bool jumpRequest;
 
 	void Awake() {
 		rb = GetComponent<Rigidbody2D> ();
+		render = GetComponent<SpriteRenderer>();
 		rb.freezeRotation = true;
 
 		verticalDirection = new Vector2 (0, 0);
 	}
 
+	// Update is called once per frame
 	void Update() {
 		if (Input.GetButtonDown ("Jump")) {
 			jumpRequest = true;
 		}
 	}
-		
+
 	void FixedUpdate() {
 
 		Vector2 playerCenter = new Vector2 (transform.position.x, transform.position.y);
@@ -60,12 +65,16 @@ public class walk : MonoBehaviour {
 			velocityVertical = 0;
 		}
 
-		// rotate character so it is always upright
-		rb.rotation = angleInRadians * Mathf.Rad2Deg;
-
 		Vector2 movementDirection = new Vector2 (Mathf.Cos (angleInRadians), Mathf.Sin (angleInRadians));
 
 		float moveHorizontal = Input.GetAxis ("Horizontal");
+
+		if (moveHorizontal > 0) {
+			render.flipX = false;
+		}
+		else if (moveHorizontal < 0) {
+			render.flipX = true;
+		}
 
 		Vector2 movement = movementDirection * -moveHorizontal;	// if moveHorizontal is 0, the vector will be 0
 
@@ -79,28 +88,23 @@ public class walk : MonoBehaviour {
 		Debug.DrawRay (playerCenter, movement, Color.green);
 		Debug.DrawRay (playerCenter, -verticalDirection.normalized*raycastMaxDistance, Color.cyan);
 
-
+		// Handle switching direction
 		if (movement != Vector2.zero && velocityHorizontalVector.normalized == -movement.normalized) {	// if the player's movement is not the same direction as its current velocity
 			// set the horizontal velocity to 0
 			rb.velocity -= velocityHorizontalVector;
-			SpriteRenderer render = new SpriteRenderer ();
-			if (render.flipX == false) {
-				render.flipX = true;
-			} else {
-				render.flipX = false;
-			}
 		}
 
+		// Cap player speed at 5
 		if (velocityHorizontal < 5) {
 			rb.AddForce (movement * speed);
-		} else {
-			print (velocityHorizontal);
 		}
 
+		// Increase speed going down
 		if (velocityVerticalVector != Vector2.zero && velocityVerticalVector.normalized == -verticalDirection.normalized) {
 			rb.AddForce (-verticalDirection.normalized * fallMultipier);
 		}
 
+		// Jump Implementation
 		if (jumpRequest) {
 			if (RaycastCheckUpdate ()) {
 				//rb.velocity += 5 * verticalDirection.normalized;
@@ -110,14 +114,16 @@ public class walk : MonoBehaviour {
 		}
 	}
 
+	// Helper function for RaycastCheckUpdate
 	private RaycastHit2D CheckRaycast() {
 		Vector2 startingPosition = new Vector2 (transform.position.x, transform.position.y);
-		return Physics2D.Raycast (	startingPosition - verticalDirection.normalized/2,
+		return Physics2D.Raycast (startingPosition - verticalDirection.normalized/2,
 									-verticalDirection.normalized,
 									raycastMaxDistance,
 									layerMaskPlanet	);
 	}
 
+	// Check if player is on the ground
 	private bool RaycastCheckUpdate() {
 		RaycastHit2D hit = CheckRaycast ();
 		if (hit.collider) {

@@ -51,13 +51,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\jump.cs" />
-     <Compile Include="Assets\MapGenerator.cs" />
-     <Compile Include="Assets\MeshGenerator.cs" />
-     <Compile Include="Assets\ModJump.cs" />
-     <Compile Include="Assets\scripts\attributes.cs" />
-     <Compile Include="Assets\scripts\elements.cs" />
-     <Compile Include="Assets\scripts\walk.cs" />
+     <Compile Include="Assets\InteractiveBoundary.cs" />
+     <Compile Include="Assets\KeysManager.cs" />
+     <Compile Include="Assets\scripts\CameraFollow.cs" />
+     <Compile Include="Assets\scripts\Conversions.cs" />
+     <Compile Include="Assets\scripts\Dialogue.cs" />
+     <Compile Include="Assets\scripts\DialogueManager.cs" />
+     <Compile Include="Assets\scripts\DialogueTrigger.cs" />
+     <Compile Include="Assets\scripts\set_sprite_radial.cs" />
+     <Compile Include="Assets\scripts\Walk.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
