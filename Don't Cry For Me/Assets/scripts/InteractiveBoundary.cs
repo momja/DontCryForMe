@@ -19,7 +19,8 @@ public class InteractiveBoundary : MonoBehaviour {
 	void FixedUpdate() {
 		polarCoords = Conversions.convertToPolar(rb.position);
 		DialogueTrigger trigger = GetComponent<DialogueTrigger>();
-		if(trigger.getDialogueUp && RayCheckUpdate()) { //If player is in talking range.
+		// If player is in talking range and dialogue isn't already up...
+		if(trigger.getDialogueUp && RayCheckUpdate()) {
 			trigger.TriggerDialogue();
 		}
 	}
@@ -32,6 +33,7 @@ public class InteractiveBoundary : MonoBehaviour {
 		Debug.DrawRay (startingPosition, horizontalDirectionNegative*5, Color.red);
 		Debug.DrawRay (startingPosition, horizontalDirectionPositive*5, Color.red);
 
+		// Make raycasts facing both directions tangent to the planet
 		RaycastHit2D hit1 = Physics2D.Raycast(	startingPosition,
 																						horizontalDirectionNegative,
 																						rayCastMaxDistance,
@@ -40,6 +42,7 @@ public class InteractiveBoundary : MonoBehaviour {
 																						horizontalDirectionPositive,
 																						rayCastMaxDistance,
 																						layerMaskPlayer);
+		// If either raycast hits player, return true
 		if (hit1.collider || hit2.collider) {
 			return true;
 		}	else {return false;}
