@@ -7,6 +7,7 @@ using UnityEngine;
 public class Walk : MonoBehaviour {
 
 	public float speed;
+	public float maxWalkSpeed = 5.5f;
 	private Rigidbody2D rb;
 	private SpriteRenderer render;
 
@@ -94,8 +95,8 @@ public class Walk : MonoBehaviour {
 			rb.velocity -= velocityHorizontalVector;
 		}
 
-		// Cap player speed at 5
-		if (velocityHorizontal < 5) {
+		// Cap player speed
+		if (velocityHorizontal < maxWalkSpeed) {
 			rb.AddForce (movement * speed);
 		}
 

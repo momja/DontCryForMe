@@ -12,6 +12,8 @@ public class InteractiveBoundary : MonoBehaviour {
 	private LayerMask layerMaskPlayer = 1 << 8;
 	private float rayCastMaxDistance = 5.0f;
 
+	private bool insideRayCheck;
+
 	void Awake () {
 		rb = GetComponent<Rigidbody2D>();
 	}
@@ -20,7 +22,8 @@ public class InteractiveBoundary : MonoBehaviour {
 		polarCoords = Conversions.convertToPolar(rb.position);
 		DialogueTrigger trigger = GetComponent<DialogueTrigger>();
 		// If player is in talking range and dialogue isn't already up...
-		if(trigger.getDialogueUp && RayCheckUpdate()) {
+		if(RayCheckUpdate() && !(insideRayCheck)) {
+			insideRayCheck = true;
 			trigger.TriggerDialogue();
 		}
 	}
@@ -45,6 +48,9 @@ public class InteractiveBoundary : MonoBehaviour {
 		// If either raycast hits player, return true
 		if (hit1.collider || hit2.collider) {
 			return true;
-		}	else {return false;}
+		}	else {
+			insideRayCheck = false;
+			return false;
+		}
 	}
 }

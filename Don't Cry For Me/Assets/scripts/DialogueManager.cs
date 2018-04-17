@@ -14,13 +14,26 @@ public class DialogueManager : MonoBehaviour {
 	public Text nameText; // edit in component
 	public Text dialogueText; // edit in component
 
-	// Use this for initialization
+	public Animator animator;
+
+	private GameObject player;
+
+	void Awake () {
+		player = GameObject.Find("Player");
+	}
+
 	void Start () {
+		// Initialize sentences
 		sentences = new Queue<string>();
 	}
 
 	// Run when dialogue is initally triggered
 	public void StartDialogue (Dialogue dialogue) {
+
+		// Pause the character's movement until the dialogue is finished
+		player.GetComponent<Walk>().enabled = false;
+
+		animator.SetBool("IsBoxOpen", true);
 
 		nameText.text = dialogue.name;
 
@@ -46,7 +59,11 @@ public class DialogueManager : MonoBehaviour {
 	}
 
 	void EndDialogue() {
-		Debug.Log("End of conversation");
+
+		// Unfreeze the character after the dialogue has ended
+		player.GetComponent<Walk>().enabled = true;
+
+		animator.SetBool("IsBoxOpen", false);
 	}
 
 
