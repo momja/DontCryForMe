@@ -16,10 +16,14 @@ Jon continues to explore the universe with his spaceship, occasionally returning
 
 Jon, is carried through a wormhole to a planet he does not recognize. After landing his ship on a cliff, He is found looking out over the massive megalopolis that lies in the distance. The scene slowly fades into the night, until the screen goes completely black. When the sun rises, there are two footprints leading up to the edge of the cliff, and Jon is no longer in the scene.
 
+Object Hierarchy:
+
+Every object in the game that the player can see will be defined by a hierarchy system. This will simplify the complication of programming in complex planets and puzzles. For example, a barn would inherit from the wood element, which would inherit from flammible and destructible attributes, similar to a house. Water would inherit from the liquid element, which would inherit from movementModifier because the player would move slower in water.
+
 
 Game Mechanics:
 
-The world is littered with miniature planets, some barely larger than Jon's ship. Each planet has a distinct biome that characterizes the plants and animals, as well as its inhabitants. Jon can explore any planet, and there are rather weak enemies for him to defeat with weapons crafted or found on the planets.
+The world is littered with miniature planets, some barely larger than Jon's ship. Each planet has a distinct biome that characterizes the plants and animals, as well as its inhabitants. Jon can explore any planet, and there are rather weak enemies for him to defeat with weapons crafted or found on the planets. Planets may also be populated with a randomly generated puzzle. These puzzles will make use of the physics engine, and the object hierarchy.
 
 Boss Battles:
 
