@@ -51,12 +51,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\InteractionIconManager.cs" />
      <Compile Include="Assets\scripts\CameraFollow.cs" />
      <Compile Include="Assets\scripts\Conversions.cs" />
      <Compile Include="Assets\scripts\Dialogue.cs" />
      <Compile Include="Assets\scripts\DialogueManager.cs" />
      <Compile Include="Assets\scripts\DialogueTrigger.cs" />
+     <Compile Include="Assets\scripts\InteractionsHandler.cs" />
      <Compile Include="Assets\scripts\InteractiveBoundary.cs" />
+     <Compile Include="Assets\scripts\JumpHandler.cs" />
      <Compile Include="Assets\scripts\KeysManager.cs" />
      <Compile Include="Assets\scripts\set_sprite_radial.cs" />
      <Compile Include="Assets\scripts\Walk.cs" />

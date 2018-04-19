@@ -20,4 +20,7 @@ public class Conversions : MonoBehaviour {
     float y = radius*Mathf.Sin(theta);
     return new Vector2(x, y);
   }
+	public static Vector2 getVectorFromAngle(float angleInRadians) {
+		return convertToCartesian(new Vector2(1, angleInRadians));
+	}
 }

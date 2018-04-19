@@ -99,37 +99,5 @@ public class Walk : MonoBehaviour {
 		if (velocityHorizontal < maxWalkSpeed) {
 			rb.AddForce (movement * speed);
 		}
-
-		// Increase speed going down
-		if (velocityVerticalVector != Vector2.zero && velocityVerticalVector.normalized == -verticalDirection.normalized) {
-			rb.AddForce (-verticalDirection.normalized * fallMultipier);
-		}
-
-		// Jump Implementation
-		if (jumpRequest) {
-			if (RaycastCheckUpdate ()) {
-				//rb.velocity += 5 * verticalDirection.normalized;
-				rb.AddForce (1.0f * verticalDirection.normalized, ForceMode2D.Impulse);
-			}
-			jumpRequest = false;
-		}
-	}
-
-	// Helper function for RaycastCheckUpdate
-	private RaycastHit2D CheckRaycast() {
-		Vector2 startingPosition = new Vector2 (transform.position.x, transform.position.y);
-		return Physics2D.Raycast (startingPosition - verticalDirection.normalized/2,
-									-verticalDirection.normalized,
-									raycastMaxDistance,
-									layerMaskPlanet	);
-	}
-
-	// Check if player is on the ground
-	private bool RaycastCheckUpdate() {
-		RaycastHit2D hit = CheckRaycast ();
-		if (hit.collider) {
-			return true;
-		}
-		return false;
 	}
 }
