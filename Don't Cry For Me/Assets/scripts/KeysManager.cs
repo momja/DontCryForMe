@@ -16,14 +16,16 @@ public class KeysManager : MonoBehaviour {
 		if (Input.GetKeyUp(KeyCode.Q)) {
 			// open interaction options
 			InteractionsHandler interactionHandler = GameObject.Find("InteractionsHandler").GetComponent<InteractionsHandler>();
-			string interactionType = interactionHandler.getType();
-			string interactionName = interactionHandler.getObjectName();
-			if (interactionType == "dialogue") {
-				DialogueTrigger trigger = GameObject.Find(interactionName).GetComponent<DialogueTrigger>();
-				trigger.TriggerDialogue();
-			}
-			else if (interactionType == "") {
-				// run associated function
+			if (interactionHandler.getState()) {
+				string interactionType = interactionHandler.getType();
+				string interactionName = interactionHandler.getObjectName();
+				if (interactionType == "dialogue") {
+					DialogueTrigger trigger = GameObject.Find(interactionName).GetComponent<DialogueTrigger>();
+					trigger.TriggerDialogue();
+				}
+				else if (interactionType == "") {
+					// run associated function
+				}
 			}
 		}
 	}

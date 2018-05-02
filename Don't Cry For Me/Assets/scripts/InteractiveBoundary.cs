@@ -17,12 +17,14 @@ public class InteractiveBoundary : MonoBehaviour {
 
 	private bool insideRayCheck;
 
-	private  InteractionsHandler interactionHandler;
+	private InteractionsHandler interactionHandler;
+	private Transform interactionIcon;
+
 
 	void Awake () {
 		rb = GetComponent<Rigidbody2D>();
 		interactionHandler = GameObject.Find("InteractionsHandler").GetComponent<InteractionsHandler>();
-
+		interactionIcon = transform.Find("InteractionCanvas/InteractionIcon");
 	}
 
 	void FixedUpdate() {
@@ -30,10 +32,12 @@ public class InteractiveBoundary : MonoBehaviour {
 		if(RayCheckUpdate()) {
 			interactionHandler.setType(interactionType);
 			interactionHandler.setObjectName(gameObject.name);
-			interactionHandler.showInteractionKey();
+			interactionHandler.setState(true);
+			interactionIcon.localScale = new Vector3(1,1);
 		}
 		else {
-			interactionHandler.hideInteractionKey();
+			interactionHandler.setState(false);
+			interactionIcon.localScale = new Vector3(0,0);
 		}
 	}
 
@@ -46,12 +50,12 @@ public class InteractiveBoundary : MonoBehaviour {
 																						Vector2.zero,
 																						0.0f,
 																						layerMaskPlayer);
-		// If either raycast hits player, return true
+		// If raycast hits player, return true
 		if (hit1.collider) {
 			insideRayCheck = true;
 			return true;
 		}	else {
-			insideRayCheck = false;
+			//insideRayCheck = false;
 			return false;
 		}
 	}

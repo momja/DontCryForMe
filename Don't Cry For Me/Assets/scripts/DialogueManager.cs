@@ -32,6 +32,7 @@ public class DialogueManager : MonoBehaviour {
 
 		// Pause the character's movement until the dialogue is finished
 		player.GetComponent<Walk>().enabled = false;
+		player.GetComponent<JumpHandler>().enabled = false;
 
 		animator.SetBool("IsBoxOpen", true);
 
@@ -62,6 +63,7 @@ public class DialogueManager : MonoBehaviour {
 
 		// Unfreeze the character after the dialogue has ended
 		player.GetComponent<Walk>().enabled = true;
+		player.GetComponent<JumpHandler>().enabled = true;
 
 		animator.SetBool("IsBoxOpen", false);
 	}

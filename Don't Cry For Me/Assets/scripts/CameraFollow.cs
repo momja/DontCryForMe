@@ -13,10 +13,19 @@ public class CameraFollow : MonoBehaviour {
     Vector2 targetPolarPosition = Conversions.convertToPolar(target.position);
     Vector3 offset = new Vector3(0,0,-1);
     Vector2 desiredPosition = targetPolarPosition;
+
+    if ((desiredPosition.y - transformPolarPosition.y) < -4) {
+      transformPolarPosition.y = transformPolarPosition.y - Mathf.PI*2;
+    }
+    else if ((desiredPosition.y - transformPolarPosition.y) > 4) {
+      transformPolarPosition.y = transformPolarPosition.y + Mathf.PI*2;
+    }
+
     Vector2 smoothedPosition = Vector3.Lerp(transformPolarPosition, desiredPosition, smoothSpeed);
     Vector2 polarPosition = smoothedPosition;
     transform.position = (Vector3) Conversions.convertToCartesian(polarPosition) + offset;
     // Camera is in 3D, and Quaternion is used to define rotation of 3D objects.
     transform.rotation = Quaternion.Euler(0, 0, transformPolarPosition.y * Mathf.Rad2Deg - 90);
+
   }
 }

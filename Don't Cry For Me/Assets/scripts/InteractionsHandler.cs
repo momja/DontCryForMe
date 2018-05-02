@@ -10,20 +10,11 @@ public class InteractionsHandler : MonoBehaviour {
 
 	private GameObject player;
 
+	private bool state;
+
 	public void Awake() {
 		player = GameObject.Find("Player");
-	}
-
-	public void showInteractionKey() {
-		Debug.Log("showing interaction key");
-		//CanvasGroup cg = GameObject.Find("InteractionCanvas");
-		//cg.alpha = 0;
-		//GameObject.Find("InteractionCanvas").SetAlpha(1.0f);
-	}
-
-	public void hideInteractionKey() {
-		Debug.Log("hiding interaction key");
-		//GameObject.Find("InteractionCanvas").SetAlpha(0.0f);
+		state = false;
 	}
 
 	public void setType(string type) {
@@ -37,5 +28,11 @@ public class InteractionsHandler : MonoBehaviour {
 	}
 	public string getObjectName() {
 		return objectName;
+	}
+	public bool getState() {
+		return state;
+	}
+	public void setState(bool state) {
+		this.state = state;
 	}
 }

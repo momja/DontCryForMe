@@ -9,7 +9,14 @@ public class DialogueTrigger : MonoBehaviour {
 
 	public Dialogue dialogue;
 
+	public bool isTriggered;
+
+	public void Awake() {
+		isTriggered = false;
+	}
+
 	public void TriggerDialogue () {
+		isTriggered = true;
 		// Call the StartDialogue function on the DialogueManager object
 		FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
 	}
